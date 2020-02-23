@@ -8,9 +8,11 @@ jobs:
     container:
       image:  google/dart:latest
     steps:
-    - name: Flutter CLI
-      uses: steebchen/flutter@v1.0.0
-    - name: Install dependencies
-      run: flutter pub get
-    - name: Run tests
-      run: flutter pub run test
+    - uses: subosito/flutter-action@v1
+      with:
+        flutter-version: 'v1.12.13+hotfix.5'
+    - run: flutter pub get
+    - run: flutter test
+#    - name: Flutter CLI
+#      uses: steebchen/flutter@v1.0.0
+#      run:
