@@ -2,13 +2,10 @@
  * Copyright (c) 2020 Robert Hjortsholm Moeller
  */
 
-import 'dart:math';
-
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:h_utils/control_flow/method.dart';
 
-void main() {
+void method() {
 
   test('\'of\' should return the value independent of input', () {
     expect(value('foo')(anything), 'foo');
