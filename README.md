@@ -1,5 +1,5 @@
 # H(elpful)Utils
-![Dart CI](https://github.com/rhmoeller/HUtils/workflows/Dart%20CI/badge.svg?branch=master)  
+![Release](https://github.com/rhmoeller/HUtils/workflows/Release/badge.svg?branch=master)
 [![Pub](https://img.shields.io/badge/PUB-0.0.1-green?style=for-the-badge)](https://pub.dartlang.org/packages/h_utils)
 
 ## About

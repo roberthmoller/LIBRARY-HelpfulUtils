@@ -4,6 +4,6 @@ import 'control_flow/method.dart';
 import 'date_time/date.dart';
 
 void main() {
-  test('Method', method);
-  test('Date', date);
+  group('Method', method);
+  group('Date', date);
 }
