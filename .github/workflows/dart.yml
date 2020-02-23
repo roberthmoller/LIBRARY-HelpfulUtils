@@ -1,13 +1,14 @@
-name: Dart CI
+#name: Dart CI
 
-on: [push]
+#on: [push]
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    container:
-      image:  google/dart:latest
-    steps:
-    - uses: steebchen/flutter@v1.0.0
-    - run: flutter pub get
-    - run: flutter test
+#jobs:
+ # build:
+  #  runs-on: ubuntu-latest
+ #   container:
+#      image:  google/dart:latest
+#    steps:
+#    - uses: steebchen/flutter@v1.0.0
+#    - run: flutter pub get
+#    - run: flutter test
+#
