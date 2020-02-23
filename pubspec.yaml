@@ -1,8 +1,7 @@
 name: h_utils
 description: Extend you code beyond reach with HUtils.
 version: 0.0.1
-author: Robert Hjortsholm Møller
-homepage:
+homepage: https://booza.app
 
 environment:
   sdk: ">=2.6.0 <3.0.0"
@@ -10,7 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  equatable: 1.1.0
+  equatable: ^1.1.0
   date_format: ^1.0.6 # fix version
 
 

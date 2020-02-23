@@ -1,14 +1,29 @@
 # HUtils
+[![Pub](https://img.shields.io/badge/PUB-0.0.1-green?style=for-the-badge)](https://pub.dartlang.org/packages/h_utils)
 
-Extend you code beyond reach with HUtils.
+## About
+This is a set of helper classes I feel that Dart was missing.
 
-## Getting Started
+## Features
+### Date & Time
 
-This project is a starting point for a Dart
-[package](https://flutter.dev/developing-packages/),
-a library module containing code that can be shared easily across
-multiple Flutter or Dart projects.
+### Control Flow
+#### \[Started\]    Method
+A function that takes an input of type I and returns a value of O.
+```
+typedef Method<I, O> = O Function(I);  
+```
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+**Usage**
+```
+final Method<int, String> method = (int input) => int.toString();
+```
+
+#### \[Started\]    Supplier
+#### \[Started\]    Consumer
+#### \[Started\]    Predicate
+#### \[Started\]    Switcher
+#### \[Started\]    Optional
+#### \[Todo\]       Either
+
+### Building Immutable Objects
