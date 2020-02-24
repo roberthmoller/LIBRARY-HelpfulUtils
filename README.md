@@ -25,7 +25,7 @@ This is a set of helper classes I feel that Dart was missing.
 
 ### Control Flow
 #### Method
-A function that takes an input of type I and returns a value of O.
+A function that takes an input of type `I` and returns a value of `O`.
 ```dart
 typedef Method<I, O> = O Function(I);  
 ```
