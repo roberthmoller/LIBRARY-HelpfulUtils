@@ -35,6 +35,19 @@ typedef Method<I, O> = O Function(I);
 final Method<int, String> method = (int input) => int.toString();
 ```
 
+**Map**
+```dart
+final Method<int, int> method = (int input) => int * 2;
+method.map((number) => number / 2)(4); // 4
+```
+**Also**
+**Tap**
+**Format**
+```dart
+final Method<String, String> method = (String input) => "Hello $input";
+method.formatt("{}, how are you?")("World"); // Hello World, how are you?
+```
+
 #### Supplier
 #### Consumer
 #### Predicate
