@@ -19,15 +19,11 @@ extension EMethod<I, O> on Method<I, O> {
     };
   }
 
-  Method<I, O> tap(final Consumer<I> tap) {
-    return also(tap);
-  }
-
   Method<I, String> format(final String value) => map((input) => value.replaceFirst("{}", input.toString()));
 }
 
 extension EListMethod<X, O> on Method<List<X>, O> {
-  Method<List<X>, O> forEach(final Consumer<X> consumer) => this.tap((l) => l.forEach(consumer));
+  Method<List<X>, O> forEach(final Consumer<X> consumer) => this.also((l) => l.forEach(consumer));
 }
 
 Method<I, O> swap<I, O>(final Method<I, O> mapper) => (i) => mapper(i);

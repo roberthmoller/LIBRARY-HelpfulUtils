@@ -5,38 +5,37 @@
 import 'package:equatable/equatable.dart';
 import 'package:h_utils/control_flow/conditions.dart';
 
-class Optional<TYPE> extends Equatable {
-  final TYPE _value;
+class Optional<T> extends Equatable {
+  final T _value;
 
-  Optional.of(TYPE value) : this._value = value;
+  Optional.of(T value) : this._value = value;
 
-  Optional.condition(bool condition, TYPE value) : this._value = (condition ? value : null);
+  Optional.condition(bool condition, T value) : this._value = (condition ? value : null);
 
   Optional.empty() : this._value = null;
 
-  factory Optional.run(TYPE Function() action) {
+  factory Optional.run(T Function() action) {
     try {
       return Optional.of(action());
     } catch (exception) {
-      // Log exception
       return Optional.empty();
     }
   }
 
-  bool equals(TYPE value) {
+  bool equals(T value) {
     return _value == value;
   }
 
   bool get isPresent => notNull(value);
 
-  TYPE get value => _value;
+  T get value => _value;
 
-  Optional<TYPE> ifPresent(final void Function(TYPE) action) {
+  Optional<T> ifPresent(final void Function(T) action) {
     if (isPresent) action(value);
     return this;
   }
 
-  Optional<NEWTYPE> flatMap<NEWTYPE>(final Optional<NEWTYPE> Function(TYPE) mapper) {
+  Optional<NEWTYPE> flatMap<NEWTYPE>(final Optional<NEWTYPE> Function(T) mapper) {
     if (isPresent) {
       var newValue = mapper(value);
       if (notNull(newValue)) return newValue;
@@ -44,47 +43,47 @@ class Optional<TYPE> extends Equatable {
     return Optional<NEWTYPE>.empty();
   }
 
-  Optional<NEWTYPE> map<NEWTYPE>(final NEWTYPE Function(TYPE) mapper) {
+  Optional<N> map<N>(final N Function(T) mapper) {
     if (isPresent) {
       var newValue = mapper(value);
       if (notNull(newValue)) return Optional.of(newValue);
     }
-    return Optional<NEWTYPE>.empty();
+    return Optional<N>.empty();
   }
 
-  Optional<TYPE> changeIf(final bool Function(Optional<TYPE>) condition, final Optional<TYPE> Function(Optional<TYPE>) mapper) {
+  Optional<T> changeIf(final bool Function(Optional<T>) condition, final Optional<T> Function(Optional<T>) mapper) {
     if (condition(this)) {
       return mapper(this);
     }
-    return Optional<TYPE>.empty();
+    return Optional<T>.empty();
   }
 
-  Optional<TYPE> run(void Function(Optional<TYPE>) action) {
+  Optional<T> run(void Function(Optional<T>) action) {
     action(this);
     return this;
   }
 
-  Optional<TYPE> apply(void Function(TYPE) action) {
+  Optional<T> apply(void Function(T) action) {
     if (isPresent) action(this.value);
     return this;
   }
 
-  TYPE orElse(TYPE Function() action) {
+  T orElse(T Function() action) {
     if (isPresent) return value;
     return action();
   }
 
-  TYPE orElseGet(TYPE newValue) {
+  T orElseGet(T newValue) {
     if (isPresent) return value;
     return newValue;
   }
 
-  TYPE orThrow(Exception exception) {
+  T orThrow(Exception exception) {
     if (isPresent) return value;
     throw exception;
   }
 
-  TYPE get() => value;
+  T get() => value;
 
   @override
   String toString() {
@@ -93,12 +92,8 @@ class Optional<TYPE> extends Equatable {
 
   @override
   List<Object> get props => [value];
-
-//  @override
-//  bool operator ==(Object other) =>
-//      identical(this, other) ||
-//          other is Optional && runtimeType == other.runtimeType && _value == other._value;
-
-//  @override
-//  int get hashCode => _value.hashCode;
 }
+
+Optional<T> empty<T>() => Optional<T>.empty();
+
+Optional<T> of<T>(final T t) => Optional<T>.of(t);

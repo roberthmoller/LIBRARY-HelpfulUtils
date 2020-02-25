@@ -18,7 +18,7 @@ class Date extends Equatable {
   final int month;
   final int year;
 
-  Date({this.day, this.month, this.year});
+  Date.of({this.day, this.month, this.year});
 
   factory Date.now() {
     return Date.from(DateTime.now());

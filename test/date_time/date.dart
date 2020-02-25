@@ -49,14 +49,14 @@ void date() {
 
 	test("from", () {
 		var now = DateTime.now();
-		Date expected = Date(day: now.day, month: now.month, year: now.year);
+		Date expected = Date.of(day: now.day, month: now.month, year: now.year);
 		Date actual = Date.from(now);
 		assert(actual == expected, "\nExpected: $actual to equal $expected");
 	});
 
 	group('toString', () {
 		test('toDMYYYString', () {
-			var now = Date(day: 1, month: 2, year: 3);
+			var now = Date.of(day: 1, month: 2, year: 3);
 			var dmyyyyString = now.toDMYYYYString();
 			var expected = "1/2/3";
 
@@ -64,7 +64,7 @@ void date() {
 		});
 
 		test('toDDMMYYYString', () {
-			var now = Date(day: 1, month: 2, year: 3);
+			var now = Date.of(day: 1, month: 2, year: 3);
 			var dmyyyyString = now.toDDMMYYYYString();
 			var expected = "01/02/0003";
 

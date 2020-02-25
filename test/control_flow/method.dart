@@ -28,6 +28,11 @@ void method() {
     expect(stub(), isA<void>());
   });
 
+  test('\'value\' should return the given value independent of the input', () {
+    Method<dynamic, int> valueMethod = value(2);
+    expect(valueMethod(10), equals(2));
+  });
+
   group('Map', () {
     test('should map the the original output value to a new value using a given mapper', () {
       final Method<String, String> passthrhough = (s) => s;
