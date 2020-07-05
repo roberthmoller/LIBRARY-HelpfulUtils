@@ -23,12 +23,10 @@ class Switcher<I, O> {
 
   Optional<O> consume() {
     MapEntry result = cases.entries.firstWhere((entry) => entry.key(value), orElse: () => null);
-    return Optional.condition(notNull(result),result).map((entry) => entry.value(value));
+    return Optional.condition(notNull(result), result).map((entry) => entry.value(value));
   }
 
   O orElse(final O value) {
     return consume().orElseGet(value);
   }
 }
-
-class Case<I, O, S extends Switcher<I, O>> {}

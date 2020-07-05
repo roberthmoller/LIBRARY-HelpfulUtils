@@ -14,6 +14,7 @@ This is a set of helper classes I feel that Dart was missing.
       * [Supplier](#supplier)
       * [Consumer](#consumer)
       * [Predicate](#predicate)
+      * [Runnable](#runnable)
       * [Switcher](#switcher)
       * [Optional](#optional)
       * [Either](#either)
@@ -69,6 +70,7 @@ method.format("{}, how are you?")("World"); // Hello World, how are you?
 #### Supplier
 #### Consumer
 #### Predicate
+#### Runnable
 #### Switcher
 #### Optional
 #### Either

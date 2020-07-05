@@ -6,10 +6,18 @@ import 'package:h_utils/control_flow/method.dart';
 
 typedef Supplier<Value> = Value Function();
 
-Supplier<I> of<I>(final I value) => () => value;
+class Suppliers {
+  static Supplier<T> of<T>(final T t) {
+    return () => t;
+  }
+}
 
-extension ESupplier<R> on Supplier<R> {
-	Supplier<R2> map<R2>(final Method<R,R2> mapper) {
-		return () => mapper(this());
-	}
+extension SupplierExtensions<T> on Supplier<T> {
+  Supplier<U> map<U>(final Method<T, U> mapper) {
+    return () => mapper(this());
+  }
+
+  T get() {
+    return this();
+  }
 }

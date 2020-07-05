@@ -93,7 +93,3 @@ class Optional<T> extends Equatable {
   @override
   List<Object> get props => [value];
 }
-
-Optional<T> empty<T>() => Optional<T>.empty();
-
-Optional<T> of<T>(final T t) => Optional<T>.of(t);
