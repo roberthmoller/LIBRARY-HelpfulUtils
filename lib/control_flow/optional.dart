@@ -4,6 +4,7 @@
 
 import 'package:equatable/equatable.dart';
 import 'package:h_utils/control_flow/conditions.dart';
+import 'package:h_utils/control_flow/predicate.dart';
 
 class Optional<T> extends Equatable {
   final T _value;
@@ -92,4 +93,12 @@ class Optional<T> extends Equatable {
 
   @override
   List<Object> get props => [value];
+
+  Set<T> toSet() {
+    return map((t) => {t}).orElseGet({});
+  }
+
+  Optional<T> filter(final Predicate<T> predicate) {
+    return flatMap((T t) => predicate(t) ? Optional.of(t) : Optional.empty());
+  }
 }

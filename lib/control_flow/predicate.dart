@@ -4,6 +4,12 @@
 
 typedef Predicate<Input> = bool Function(Input);
 
+class Predicates {
+  static Predicate value(final bool value) {
+    return (_) => value;
+  }
+}
+
 extension EPredicate<Input> on Predicate<Input> {
   Predicate<Input> get not => (i) => !this(i);
 
