@@ -8,7 +8,7 @@ on:
       - master
 jobs:
   test:
-    name: Tests
+    name: Test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -18,9 +18,13 @@ jobs:
       - uses: subosito/flutter-action@v1
         with:
           channel: 'stable'
+      - name: Update dependencies
       - run: flutter pub get
+      - name: Run tests
       - run: flutter test
-  build:
+  release:
+    needs: test
+    name: Release
     runs-on: ubuntu-latest
     container:
       image:  google/dart:latest
