@@ -1,6 +1,6 @@
 name: h_utils
 description: Extend you code beyond reach with HUtils.
-version: 0.0.3
+version:
 homepage: https://booza.app
 
 environment:
