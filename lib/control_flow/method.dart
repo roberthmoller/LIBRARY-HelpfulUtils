@@ -19,6 +19,10 @@ extension EMethod<I, O> on Method<I, O> {
     };
   }
 
+  Method<U, O> compose<U>(final Method<U, I> composer) {
+    return composer.map((i) => this(i));
+  }
+
   Method<I, String> format(final String value) => map((input) => value.replaceFirst("{}", input.toString()));
 }
 
