@@ -63,10 +63,10 @@ class Date extends Equatable {
 
   String toLongString() {
     return Switcher.of(this.difference(Date.now()))
-        .predicate((diff) => diff.inDays.abs() > WEEK, using(toDMYYYYString))
-        .predicate((diff) => diff.inDays.abs() > 1, value(formatDate(this.toDateTime(), [DD])))
-        .key(Duration(days: -1), value('Yesterday'))
-        .key(Duration(days: 1), value('Tomorrow'))
+        .predicate((diff) => diff.inDays.abs() > WEEK, Methods.using(toDMYYYYString))
+        .predicate((diff) => diff.inDays.abs() > 1, Methods.value(formatDate(this.toDateTime(), [DD])))
+        .key(Duration(days: -1), Methods.value('Yesterday'))
+        .key(Duration(days: 1), Methods.value('Tomorrow'))
         .orElse('Today');
   }
 
@@ -74,24 +74,24 @@ class Date extends Equatable {
     return Switcher.of(this.difference(Date.now()))
         .predicate((diff) => daysToYears(diff.inDays) < -1, absDays(daysToYears).format("{} years ago"))
         .predicate((diff) => daysToYears(diff.inDays) > 1, absDays(daysToYears).format("In {} years"))
-        .predicate((diff) => daysToYears(diff.inDays) == -1, value("Last year"))
-        .predicate((diff) => daysToYears(diff.inDays) == 1, value("Next year"))
+        .predicate((diff) => daysToYears(diff.inDays) == -1, Methods.value("Last year"))
+        .predicate((diff) => daysToYears(diff.inDays) == 1, Methods.value("Next year"))
         .predicate((diff) => daysToMonths(diff.inDays) < -1, absDays(daysToMonths).format("{} months ago"))
         .predicate((diff) => daysToMonths(diff.inDays) > 1, absDays(daysToMonths).format("In {} months"))
-        .predicate((diff) => daysToMonths(diff.inDays) == -1, value("Last month"))
-        .predicate((diff) => daysToMonths(diff.inDays) == 1, value("Next month"))
+        .predicate((diff) => daysToMonths(diff.inDays) == -1, Methods.value("Last month"))
+        .predicate((diff) => daysToMonths(diff.inDays) == 1, Methods.value("Next month"))
         .predicate((diff) => daysToWeeks(diff.inDays) < -1, absDays(daysToWeeks).format("{} weeks ago"))
         .predicate((diff) => daysToWeeks(diff.inDays) > 1, absDays(daysToWeeks).format("In {} weeks"))
-        .predicate((diff) => daysToWeeks(diff.inDays) == -1, value("Last week"))
-        .predicate((diff) => daysToWeeks(diff.inDays) == 1, value("Next week"))
-        .predicate((diff) => diff.inDays < -1, absDays(passthrough).format("{} days ago"))
-        .predicate((diff) => diff.inDays > 1, absDays(passthrough).format("In {} days"))
-        .key(Duration(days: -1), value('Yesterday'))
-        .key(Duration(days: 1), value('Tomorrow'))
+        .predicate((diff) => daysToWeeks(diff.inDays) == -1, Methods.value("Last week"))
+        .predicate((diff) => daysToWeeks(diff.inDays) == 1, Methods.value("Next week"))
+        .predicate((diff) => diff.inDays < -1, absDays(Methods.passthrough).format("{} days ago"))
+        .predicate((diff) => diff.inDays > 1, absDays(Methods.passthrough).format("In {} days"))
+        .key(Duration(days: -1), Methods.value('Yesterday'))
+        .key(Duration(days: 1), Methods.value('Tomorrow'))
         .orElse('Today');
   }
 
-  Method<Duration, int> absDays(final Method<int, int> m) => swap((diff) => m(diff.inDays).abs());
+  Method<Duration, int> absDays(final Method<int, int> m) => Methods.map((diff) => m(diff.inDays).abs());
 
   String toDMYYYYString() {
     return "$day/$month/$year";
