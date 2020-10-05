@@ -21,9 +21,7 @@ jobs:
           pub global activate cider
           export PATH="$PATH":"$HOME/.pub-cache/bin"
           echo "##[set-output name=version;]v$(cider version)"
-          cider describe $(cider version)> RELEASE.md
-          sed -i 's/#(.*)*//g' RELEASE.md
-          sed -i 's/##(.*)//g' RELEASE.md
+          cider describe $(cider version) | grep "^\#\#\#\|^\-" > RELEASE.md
 
       - name: Create Release
         uses: actions/create-release@v1
