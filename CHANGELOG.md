@@ -1,9 +1,7 @@
-## [Unreleased]
-## 0.0.5 - 2020-10-05
+# Changelog
+## 0.0.5
 ### Added
 - Added Using implementation
 
 ### Fixed
 - Fixed file casing
-
-[Unreleased]:
