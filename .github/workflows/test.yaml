@@ -21,7 +21,3 @@ jobs:
           echo Updating Path
           export PATH="$PATH":"$HOME/.pub-cache/bin"
           echo "##[set-output name=version;]v$(cider version)"
-      - uses: actions/checkout@v1
-      - name: Bar
-        run: |
-          echo "Current version is ${{ steps.foo.outputs.version }}"
