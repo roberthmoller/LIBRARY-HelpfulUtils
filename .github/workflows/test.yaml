@@ -12,6 +12,7 @@ jobs:
     container:
       image:  google/dart:latest
     steps:
+      - use: actions/checkout@v1
       - name: Versioning
         run: |
           pub global activate cider
