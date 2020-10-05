@@ -18,5 +18,8 @@ jobs:
           echo ${{ github.ref }}
           echo Updating Path
           export PATH="$PATH":"$HOME/.pub-cache/bin"
+          ls -al
           cider log add 'Test'
-          cat ./CHANGELOG.md
+          cat CHANGELOG.md
+          echo v$(cider version)
+
