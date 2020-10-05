@@ -13,11 +13,15 @@ jobs:
       image:  google/dart:latest
     steps:
       - uses: actions/checkout@v1
-      - name: Versioning
-      - id: foo
+        name: Versioning
+        id: foo
         run: |
           pub global activate cider
           echo ${{ github.ref }}
           echo Updating Path
           export PATH="$PATH":"$HOME/.pub-cache/bin"
           echo "##[set-output name=version;]v$(cider version)"
+      - uses: actions/checkout@v1
+        name: Bar
+        run: |
+          echo "Current version is ${{ steps.foo.outputs.version }}"
