@@ -13,11 +13,12 @@ jobs:
       image: google/dart:latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
 
       - name: Create Artifact
-        run: |
-          zip artifact ./
+        uses: montudor/action-zip@v0.1.0
+        with:
+          args: zip -qq -r artifact.zip ./
 
       - name: Versioning
         id: versioning
