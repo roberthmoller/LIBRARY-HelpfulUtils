@@ -25,7 +25,3 @@ jobs:
       - name: Test
         run: |
           echo "Current version is ${{ steps.foo.outputs.version }}"
-#          ls -al
-#          cider log add 'Test'
-#          cat CHANGELOG.md
-#          echo
