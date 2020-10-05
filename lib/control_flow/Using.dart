@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020. Booza <contact@booza.app>
+ * Copyright (c) 2020. Robert Hjortsholm Moeller
  */
 
 import 'package:h_utils/control_flow/method.dart';
