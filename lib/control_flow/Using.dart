@@ -42,7 +42,7 @@ class OptionallyUsing<T> extends Using<T> {
     final Optional<T Function(T value)> optionalMapper,
   ) {
     return OptionallyUsing._(
-      optionalMapper.orElseGet(passthrough)(value),
+      optionalMapper.orElseGet(Methods.passthrough)(value),
       optionalMapper,
     );
   }

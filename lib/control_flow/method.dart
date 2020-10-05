@@ -30,15 +30,16 @@ extension EListMethod<X, O> on Method<List<X>, O> {
   Method<List<X>, O> forEach(final Consumer<X> consumer) => this.also((l) => l.forEach(consumer));
 }
 
-Method<I, O> swap<I, O>(final Method<I, O> mapper) => (i) => mapper(i);
+class Methods {
+  static Method<I, O> map<I, O>(final Method<I, O> mapper) => (i) => mapper(i);
 
-Method<I, O> value<I, O>(final O value) => (_) => value;
+  static Method<I, O> value<I, O>(final O value) => (_) => value;
 
-Method<I, O> using<I, O>(final Supplier<O> reference) => (_) => reference();
+  static Method<I, O> using<I, O>(final Supplier<O> reference) => (_) => reference();
 
-Method<I, void> stub<I, O>() => (i) {};
+  static Method<dynamic, void> get stub => (i) {};
 
-O passthrough<I, O extends I>(final I value) => value;
+  static O passthrough<I, O extends I>(final I value) => value;
 
-Method<dynamic, String> format(final String value) => (input) => value.replaceFirst("{}", input.toString());
-//Method<List<dynamic>, String> formatList(final String value) => (input) => value.replaceAllMapped("\${}", (match) => value); // todo: How to replace matches iteratively
+  static Method<dynamic, String> format(final String value) => (input) => value.replaceFirst("{}", input.toString());
+}
