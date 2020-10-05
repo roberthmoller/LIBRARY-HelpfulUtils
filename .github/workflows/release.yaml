@@ -40,5 +40,10 @@ jobs:
             "expiration": 1570721159347
           }
           EOF
+      - name: Versioning
+        run: |
+          pub global activate cider
+          cider describe 0.0.5
+
       - name: Publish package
         run: pub publish -f
