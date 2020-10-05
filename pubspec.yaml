@@ -1,20 +1,19 @@
 name: h_utils
-description: Extend you code beyond reach with HUtils.
-version: 0.0.4
+version: 0.0.5
 homepage: https://booza.app
+description: Extend you code beyond reach with HUtils.
 
-environment:
-  sdk: ">=2.6.0 <3.0.0"
+environment: 
+  sdk: '>=2.6.0 <3.0.0'
 
-dependencies:
-  flutter:
-    sdk: flutter
+dependencies: 
   equatable: ^1.1.0
-  date_format: ^1.0.6 # fix version
+  date_format: ^1.0.6
+  flutter: 
+    sdk: flutter
 
-
-dev_dependencies:
-  flutter_test:
+dev_dependencies: 
+  flutter_test: 
     sdk: flutter
 
 flutter:
