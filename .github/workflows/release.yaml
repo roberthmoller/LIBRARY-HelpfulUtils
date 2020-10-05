@@ -27,5 +27,5 @@ jobs:
     container:
       image:  google/dart:latest
     steps:
-      - uses: ./.github/workflows/actions/git-release.yaml
-      - uses: ./.github/workflows/actions/pub-publish.yaml
+      - uses: ./.github/workflows/actions/git-release
+      - uses: ./.github/workflows/actions/pub-publish

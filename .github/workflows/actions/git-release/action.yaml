@@ -2,7 +2,7 @@
 
 name: Release to GitHub
 runs:
-  using: 'composite'
+  using: composite
   runs-on: ubuntu-latest
   container:
     image: google/dart:latest
