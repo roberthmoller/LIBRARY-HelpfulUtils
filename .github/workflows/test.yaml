@@ -22,7 +22,10 @@ jobs:
           export PATH="$PATH":"$HOME/.pub-cache/bin"
           echo "##[set-output name=version;]v$(cider version)"
           cider describe $(cider version)> RELEASE.md
-          sed -i 's/#//g' RELEASE.md
+          sed -i 's/# Changelog//g' RELEASE.md
+          sed -i 's/*/**/g' RELEASE.md
+          sed -i 's/###/*/g' RELEASE.md
+          sed -i 's/##//g' RELEASE.md
 
       - name: Create Release
         uses: actions/create-release@v1

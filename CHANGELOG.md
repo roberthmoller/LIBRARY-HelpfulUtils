@@ -1,13 +1,5 @@
 # Changelog
-## 0.0.6
-### Added
-- Added Using implementation
-
-### Fixed
-- Fixed file casing
-
-
-## 0.0.5
+## [0.0.5] - 2020-10-05
 ### Added
 - Added Using implementation
 
