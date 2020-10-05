@@ -19,3 +19,4 @@ jobs:
           echo Updating Path
           export PATH="$PATH":"$HOME/.pub-cache/bin"
           cider log add 'Test'
+          cat ./CHANGELOG.md
