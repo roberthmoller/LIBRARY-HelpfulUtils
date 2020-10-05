@@ -15,6 +15,7 @@ jobs:
       - name: Versioning
         run: |
           pub global activate cider
-          export PATH="$PATH":"$HOME/.pub-cache/bin"
-          cider describe 0.0.5
           echo ${{ github.ref }}
+          echo Updating Path
+          export PATH="$PATH":"$HOME/.pub-cache/bin"
+          cider log add 'Test'
