@@ -18,8 +18,12 @@ jobs:
       - uses: subosito/flutter-action@v1
         with:
           channel: 'stable'
-      - run: flutter pub get
-      - run: flutter test
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Tests
+        run: flutter test
   release:
     needs: test
     name: Release
@@ -27,8 +31,30 @@ jobs:
     container:
       image:  google/dart:latest
     steps:
-      - uses: actions/checkout@v1
-      - name: Setup credentials
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Versioning
+        id: versioning
+        run: |
+          pub global activate cider
+          export PATH="$PATH":"$HOME/.pub-cache/bin"
+          echo "##[set-output name=version;]v$(cider version)"
+          cider describe $(cider version) | grep "^\#\#\#\|^\-" > RELEASE.md
+
+      - name: Create Release
+        id: create-release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ steps.versioning.outputs.version }}
+          release_name: ${{ steps.versioning.outputs.version }}
+          body_path: ./RELEASE.md
+          draft: false
+          prerelease: false
+
+      - name: Configuring pub.dev credentials
         run: |
           mkdir -p ~/.pub-cache
           cat <<EOF > ~/.pub-cache/credentials.json
@@ -40,5 +66,6 @@ jobs:
             "expiration": 1570721159347
           }
           EOF
+
       - name: Publish package
         run: pub publish -f

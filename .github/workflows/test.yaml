@@ -1,0 +1,21 @@
+# Copyright (c) 2020 Robert Hjortsholm Moeller
+
+name: Test Action
+on:
+  push:
+    branches:
+      - test/*
+jobs:
+  cider:
+    name: Release
+    runs-on: ubuntu-latest
+    container:
+      image: google/dart:latest
+    steps:
+      - name: Echo
+        run: |
+          echo Foo bar
+      - name: Github release
+        uses: ./.github/workflows/actions/git-release
+
+
