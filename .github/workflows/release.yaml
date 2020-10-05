@@ -27,23 +27,5 @@ jobs:
     container:
       image:  google/dart:latest
     steps:
-      - uses: actions/checkout@v1
-      - name: Setup credentials
-        run: |
-          mkdir -p ~/.pub-cache
-          cat <<EOF > ~/.pub-cache/credentials.json
-          {
-            "accessToken":"${{ secrets.OAUTH_ACCESS_TOKEN }}",
-            "refreshToken":"${{ secrets.OAUTH_REFRESH_TOKEN }}",
-            "tokenEndpoint":"https://accounts.google.com/o/oauth2/token",
-            "scopes": [ "openid", "https://www.googleapis.com/auth/userinfo.email" ],
-            "expiration": 1570721159347
-          }
-          EOF
-      - name: Versioning
-        run: |
-          pub global activate cider
-          cider describe 0.0.5
-
-      - name: Publish package
-        run: pub publish -f
+      - uses: ./.github/workflows/actions/git-release
+      - uses: ./.github/workflows/actions/pub-publish
