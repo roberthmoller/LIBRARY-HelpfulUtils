@@ -1,11 +1,12 @@
 # Copyright (c) 2020 Robert Hjortsholm Moeller
 
 name: Publish to Pub.dev
+description: "Checks out the repository and publish the code to pub.dev"
 runs:
   using: composite
   runs-on: ubuntu-latest
-  container:
-    image: google/dart:latest
+    container:
+      image: google/dart:latest
   steps:
     - name: Checkout code
       uses: actions/checkout@v1

@@ -1,11 +1,9 @@
 # Copyright (c) 2020 Robert Hjortsholm Moeller
 
 name: Release to GitHub
+description: "Checks out the repository and publish the code to pub.dev"
 runs:
   using: composite
-  runs-on: ubuntu-latest
-  container:
-    image: google/dart:latest
   steps:
     - name: Checkout code
       uses: actions/checkout@v2
