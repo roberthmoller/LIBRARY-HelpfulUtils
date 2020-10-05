@@ -14,25 +14,25 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v1
-      - name: Versioning
-        id: versioning
+
+      - name: Version Management
         run: |
           pub global activate cider
           export PATH="$PATH":"$HOME/.pub-cache/bin"
-          echo "##[set-output name=version;]v$(cider version)"
-      - name: Bar
+
+      - name: Versioning
+        id: versioning
         run: |
-          echo "Current version is ${{ steps.versioning.outputs.version }}"
+          echo "##[set-output name=version;]v$(cider version)"
+          cider describe > RELEASE.md
+
       - name: Create Release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ steps.versioning.outputs.version }}
-          release_name: Release ${{ steps.versioning.outputs.version }}
-          body: |
-            Changes in this Release
-            - First Change
-            - Second Change
+          release_name: ${{ steps.versioning.outputs.version }}
+          body_path: ./RELEASE.md
           draft: true
           prerelease: false
