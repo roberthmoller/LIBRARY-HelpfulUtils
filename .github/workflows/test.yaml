@@ -14,13 +14,18 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Versioning
+      - id: foo
         run: |
           pub global activate cider
           echo ${{ github.ref }}
           echo Updating Path
           export PATH="$PATH":"$HOME/.pub-cache/bin"
-          ls -al
-          cider log add 'Test'
-          cat CHANGELOG.md
-          echo v$(cider version)
-
+          echo "##[set-output name=version;]v$(cider version)"
+      - uses: actions/checkout@v1
+      - name: Test
+        run: |
+          echo "Current version is ${{ steps.foo.outputs.version }}"
+#          ls -al
+#          cider log add 'Test'
+#          cat CHANGELOG.md
+#          echo
