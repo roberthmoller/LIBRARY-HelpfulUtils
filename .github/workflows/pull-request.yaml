@@ -19,3 +19,12 @@ jobs:
           channel: 'stable'
       - run: flutter pub get
       - run: flutter test
+  dry-run:
+    needs: test
+    name: Dry Publish
+    runs-on: ubuntu-latest
+    container:
+      image: google/dart:latest
+    steps:
+      - uses: actions/checkout@v1
+      - run: pub publish --dry-run
