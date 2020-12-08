@@ -9,11 +9,11 @@ import 'package:h_utils/control_flow/predicate.dart';
 class Optional<T> extends Equatable {
   final T _value;
 
-  Optional.of(T value) : this._value = value;
+  const Optional.of(T value) : this._value = value;
 
-  Optional.condition(bool condition, T value) : this._value = (condition ? value : null);
+  const Optional.condition(bool condition, T value) : this._value = (condition ? value : null);
 
-  Optional.empty() : this._value = null;
+  const Optional.empty() : this._value = null;
 
   factory Optional.run(T Function() action) {
     try {
