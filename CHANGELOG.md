@@ -5,6 +5,7 @@
 - Refactored Optional to have separate types for the different states
 - Added Optional helper methods on Optional<String>, Optional<List>, and Optional<? extends num>
 
+## 0.0.9 - 2021-03-04
 ## 0.0.8 - 2021-03-04
 ### Changed
 - Update equatable from ^1.1.0 to ^2.0.0
