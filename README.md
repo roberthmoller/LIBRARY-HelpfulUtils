@@ -1,11 +1,12 @@
 # H(elpful)Utils
 ![Release](https://github.com/rhmoeller/HUtils/workflows/Release/badge.svg?branch=master)
-[![Pub](https://img.shields.io/badge/PUB-0.0.1-green?style=for-the-badge)](https://pub.dartlang.org/packages/h_utils)
+
+[comment]: <> ([![Pub]&#40;https://img.shields.io/badge/PUB-0.0.1-green?style=for-the-badge&#41;]&#40;https://pub.dartlang.org/packages/h_utils&#41;)
 This is a work in progress
 ## About
 This is a set of helper classes I feel that Dart was missing.
 
-**Disclaimer** keep in mind that this is made for personal use only.
+**Disclaimer** this is made for personal use and interface changes might occur.
 ## Features
 * [Usage](#usage)
     * [Date & Time](#date--time)

@@ -15,6 +15,8 @@ extension OptionalLists<T> on OptionalList<T> {
     return bothPresent<List<T>, List<T>, List<T>>((a, b) => a.followedBy(b).toList())(this, that);
   }
 
+  int get length => this.map((x) => x.length).orElseGet(0);
+
   OptionalString join([final String separator = ' ']) => this.map((x) => x.join(separator));
 
   Optional<R> fold<R>(final R initial, final R Function(R, T) reducer) => this.map((x) => x.fold(initial, reducer));

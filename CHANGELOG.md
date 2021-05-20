@@ -1,4 +1,10 @@
 # Changelog
+## 0.0.10 - 2021-05-20
+### Changed
+- Started using null-safety
+- Refactored Optional to have separate types for the different states
+- Added Optional helper methods on Optional<String>, Optional<List>, and Optional<? extends num>
+
 ## 0.0.7 - 2020-10-31
 ### Added
 - Added logger
