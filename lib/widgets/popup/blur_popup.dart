@@ -7,7 +7,7 @@ import 'package:h_utils/widgets/popup/popup.dart';
 mixin BlurSheet<R> implements HasBaseWidget, Popup<R> {
   static const double BORDER_RADIUS = 15;
 
-  Widget base(BuildContext context, {Widget child}) {
+  Widget base(BuildContext context, {required Widget child}) {
     return Dismissible(
       key: Key('dismissiblePopup'),
       direction: DismissDirection.down,
@@ -31,11 +31,11 @@ mixin BlurSheet<R> implements HasBaseWidget, Popup<R> {
 
 mixin DraggableBlurSheet<R> implements HasBaseWidget, Popup<R> {
   static const double BORDER_RADIUS = 15;
-  ScrollController controller;
+  ScrollController? controller;
   final minChildSize = 0.4;
   final initialChildSize = 0.6;
 
-  Widget base(BuildContext context, {Widget child}) {
+  Widget base(BuildContext context, {required Widget child}) {
     return DraggableScrollableSheet(
       expand: false,
       minChildSize: minChildSize,
@@ -62,7 +62,7 @@ mixin DraggableBlurSheet<R> implements HasBaseWidget, Popup<R> {
 }
 
 mixin BlurPrompt<R> implements HasBaseWidget, Popup<R> {
-  Widget base(BuildContext context, {Widget child}) {
+  Widget base(BuildContext context, {required Widget child}) {
     return Center(
       child: Dismissible(
         key: Key('dismissiblePopup'),
