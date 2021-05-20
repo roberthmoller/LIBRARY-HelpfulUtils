@@ -2,10 +2,12 @@
  * Copyright (c) 2020 Robert Hjortsholm Moeller
  */
 
-import 'package:h_utils/control_flow/conditions.dart';
 import 'package:h_utils/control_flow/method.dart';
-import 'package:h_utils/control_flow/optional.dart';
+import 'package:h_utils/control_flow/optional/optional.dart';
+import 'package:h_utils/control_flow/optional/present.dart';
 import 'package:h_utils/control_flow/predicate.dart';
+
+import 'optional/empty.dart';
 
 class Switcher<I, O> {
   final Map<Predicate<I>, Method<I, O>> cases;
@@ -22,8 +24,11 @@ class Switcher<I, O> {
   }
 
   Optional<O> consume() {
-    MapEntry result = cases.entries.firstWhere((entry) => entry.key(value), orElse: () => null);
-    return Optional.condition(notNull(result), result).map((entry) => entry.value(value));
+    return cases.entries.fold(empty<O>(), (carry, entry) {
+      return carry is Empty<MapEntry> && entry.key(value) // @formatter:off
+          ? present(entry).map((match) => match.value(value))
+          : carry; // @formatter:on
+    });
   }
 
   O orElse(final O value) {
