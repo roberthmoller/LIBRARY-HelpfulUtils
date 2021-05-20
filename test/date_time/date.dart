@@ -5,7 +5,7 @@ import 'package:date_format/date_format.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:h_utils/date_time/date.dart';
 
-void date() {
+void main() {
 	const int YEAR = 365;
 	const int MONTH = 31;
 	const int WEEK = 7;

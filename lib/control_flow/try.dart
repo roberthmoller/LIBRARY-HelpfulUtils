@@ -40,7 +40,7 @@ class Try<T> {
     try {
       return _supplier.get();
     } on Exception catch (e) {
-      return Optional.of(_recoveries[e.runtimeType]!)// @formatter:off
+      return Optional.of(_recoveries[e.runtimeType])// @formatter:off
           .filter((recovery) => notNull(e))
           .map((recovery) => recovery(e))
           .orThrow(e); // @formatter:on
@@ -51,7 +51,7 @@ class Try<T> {
     try {
       return Optional.of(_supplier.get());
     } on Exception catch (e) {
-      return Optional.of(_recoveries[e.runtimeType]!) // @formatter:off
+      return Optional.of(_recoveries[e.runtimeType]) // @formatter:off
           .filter((recovery) => notNull(e))
           .map((recovery) => recovery(e)); // @formatter:on
     }

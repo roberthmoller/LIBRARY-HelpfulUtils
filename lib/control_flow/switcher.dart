@@ -25,7 +25,7 @@ class Switcher<I, O> {
 
   Optional<O> consume() {
     return cases.entries.fold(empty<O>(), (carry, entry) {
-      return carry is Empty<MapEntry> && entry.key(value) // @formatter:off
+      return carry is Empty<O> && entry.key(value) // @formatter:off
           ? present(entry).map((match) => match.value(value))
           : carry; // @formatter:on
     });

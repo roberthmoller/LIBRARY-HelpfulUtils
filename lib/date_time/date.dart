@@ -71,6 +71,7 @@ class Date extends Equatable {
   }
 
   String toShortString() {
+    print("diff ${this.difference(Date.now()).inDays}");
     return Switcher.of(this.difference(Date.now()))
         .predicate((diff) => daysToYears(diff.inDays) < -1, absDays(daysToYears).format("{} years ago"))
         .predicate((diff) => daysToYears(diff.inDays) > 1, absDays(daysToYears).format("In {} years"))
@@ -86,8 +87,8 @@ class Date extends Equatable {
         .predicate((diff) => daysToWeeks(diff.inDays) == 1, Methods.value("Next week"))
         .predicate((diff) => diff.inDays < -1, absDays(Methods.passthrough).format("{} days ago"))
         .predicate((diff) => diff.inDays > 1, absDays(Methods.passthrough).format("In {} days"))
-        .key(Duration(days: -1), Methods.value('Yesterday'))
-        .key(Duration(days: 1), Methods.value('Tomorrow'))
+        .predicate((diff) => diff.inDays == -1, Methods.value('Yesterday'))
+        .predicate((diff) => diff.inDays == 1, Methods.value('Tomorrow'))
         .orElse('Today');
   }
 
