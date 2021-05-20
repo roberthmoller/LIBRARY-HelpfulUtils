@@ -10,9 +10,11 @@ extension StringExtensions on String {}
 
 extension StringNumExtensions on num {
   String toFixedLengthString(final int length) {
-    return Suppliers.of(this.toString())
-        .map((string) => string.substring(0, min(string.length, length)))
-        .map((string) => string.padLeft(length, '0'))
-        .get();
+    return Suppliers.of(this.toString()).map((string) => string.substring(0, min(string.length, length))).map((string) => string.padLeft(length, '0')).get();
   }
 }
+
+const String EMPTY = '';
+const String SPACE = ' ';
+const String TAB = '\t';
+const String NEW_LINE = '\N';

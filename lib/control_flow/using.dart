@@ -3,7 +3,7 @@
  */
 
 import 'package:h_utils/control_flow/method.dart';
-import 'package:h_utils/control_flow/optional.dart';
+import 'package:h_utils/control_flow/optional/optional.dart';
 
 /// Eager using implementation
 class Using<T> {

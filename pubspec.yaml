@@ -1,15 +1,15 @@
 name: h_utils
-version: 0.0.8
+version: 0.0.10
 homepage: https://booza.app
 description: Extend you code beyond reach with HUtils.
 
 environment: 
-  sdk: '>=2.6.0 <3.0.0'
+  sdk: '>=2.14.0-129.0.dev <3.0.0'
 
 dependencies: 
-  equatable: ^2.0.0
-  date_format: ^1.0.9
-  logger: ^0.9.4
+  equatable: ^2.0.2
+  date_format: ^2.0.2
+  logger: ^1.0.0
   flutter: 
     sdk: flutter
 

@@ -6,9 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:h_utils/logger/logger.dart';
 
 abstract class Popup<R> {
-  Future<R> show(BuildContext context);
+  Future<R?> show(BuildContext context);
 
-  bool pop(BuildContext context, [R result]) {
+  bool pop(BuildContext context, [R? result]) {
     if (Navigator.of(context).canPop()) {
       Navigator.of(context).pop(result);
       return true;
@@ -18,13 +18,13 @@ abstract class Popup<R> {
 }
 
 abstract class HasBaseWidget {
-  Widget base(BuildContext context, {Widget child});
+  Widget base(BuildContext context, {required Widget child});
 }
 
 abstract class StatelessPopup<R> extends StatelessWidget with PrettyLogger<StatelessPopup<R>> implements Popup<R>, HasBaseWidget {
   Widget build(BuildContext context);
 
-  Future<R> show(BuildContext context) async {
+  Future<R?> show(BuildContext context) async {
     if (Platform.isIOS) {
       // VibrationHandler().popup(); todo: should vibrate
     }
@@ -43,7 +43,7 @@ abstract class StatelessPopup<R> extends StatelessWidget with PrettyLogger<State
 abstract class StatefulPopup<R> extends StatefulWidget with PrettyLogger<StatelessPopup<R>>, HasBaseWidget {
   Widget self(BuildContext context);
 
-  Future<R> show(BuildContext context) async {
+  Future<R?> show(BuildContext context) async {
     if (Platform.isIOS) {
       // VibrationHandler().popup(); todo: should vibrate
     }
@@ -58,7 +58,7 @@ abstract class StatefulPopup<R> extends StatefulWidget with PrettyLogger<Statele
     ).catchError(log.e);
   }
 
-  bool pop(BuildContext context, [R result]) {
+  bool pop(BuildContext context, [R? result]) {
     if (Navigator.of(context).canPop()) {
       Navigator.of(context).pop(result);
       return true;

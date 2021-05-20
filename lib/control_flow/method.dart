@@ -39,7 +39,7 @@ class Methods {
 
   static Method<dynamic, void> get stub => (i) {};
 
-  static O passthrough<I, O extends I>(final I value) => value;
+  static O passthrough<I extends O, O>(final I value) => value;
 
   static Method<dynamic, String> format(final String value) => (input) => value.replaceFirst("{}", input.toString());
 }
