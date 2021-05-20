@@ -44,6 +44,15 @@ class Try<T> {
     }
   }
 
+
+  Optional<T> toOptional() {
+    try {
+      return Optional.of(_supplier.get());
+    } catch (e) {
+      return Optional.of(_recoveries[e.runtimeType]).filter((recovery) => notNull(e)).map((recovery) => recovery(e));
+    }
+  }
+
   Try<T> _copyWith({final Supplier<T> supplier, final Map<Type, Recovery<T>> recoveries}) {
     return Try._(
       supplier: supplier ?? this._supplier,
