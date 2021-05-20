@@ -3,7 +3,6 @@
  */
 
 import 'package:equatable/equatable.dart';
-import 'package:h_utils/control_flow/conditions.dart';
 import 'package:h_utils/control_flow/predicate.dart';
 import 'package:h_utils/control_flow/supplier.dart';
 
@@ -13,8 +12,8 @@ import 'present.dart';
 Optional<T> of<T>(final T value) => Optional.of(value);
 
 abstract class Optional<T> extends Equatable {
-  static Optional<T> of<T>(final T value) {
-    return notNull(value) ? Present(value) : Empty();
+  static Optional<T> of<T>(final T? value) {
+    return value != null ? Present(value) : Empty();
   }
 
   static Empty<T> empty<T>() => const Empty();

@@ -5,7 +5,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:h_utils/control_flow/method.dart';
 
-void method() {
+void main() {
 
   test('\'of\' should return the value independent of input', () {
     expect(Methods.value('foo')(anything), 'foo');

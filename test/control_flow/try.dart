@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:h_utils/control_flow/try.dart';
 
-void tryTest() {
+void main() {
   test('recovers executions with no value', () {
     Try.run(() => throw TestException1()).recover<TestException1>((e) => 'dolorem ipsum').get();
   });
