@@ -25,7 +25,7 @@ class Logger {
     );
   }
 
-  void i(final dynamic content, {final String title}) {
+  void i(final dynamic content, {final String? title}) {
     logger.i('${type.toString()} | $title', content);
   }
 
@@ -33,11 +33,11 @@ class Logger {
     logger.d('${type.toString()} | $title', message);
   }
 
-  void w(final String title, final dynamic message, [final dynamic error, final StackTrace stackTrace]) {
+  void w(final String title, final dynamic message, [final dynamic error, final StackTrace? stackTrace]) {
     logger.w(content(title: title, message: message), error, stackTrace);
   }
 
-  void v(final String title, final dynamic message, [final dynamic error, final StackTrace stackTrace]) {
+  void v(final String title, final dynamic message, [final dynamic error, final StackTrace? stackTrace]) {
     logger.v(content(title: title, message: message), error, stackTrace);
   }
 
@@ -49,7 +49,7 @@ class Logger {
     logger.e(type.toString(), error, stackTrace);
   }
 
-  String content({final String title, final String message}) =>
+  String content({final String? title, final String? message}) =>
       '[${type.runtimeType.toString()}] ${Optional.of(title).orElseGet("")}${Optional.of(message).map(Methods.format('\n\n{}')).orElseGet("")}';
 }
 

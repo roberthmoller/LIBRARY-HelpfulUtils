@@ -37,7 +37,3 @@ extension OptionalNums on OptionalNum {
     return bothPresent<num, num, num>((a, b) => a ~/ b)(this, that);
   }
 }
-
-main() {
-  OptionalNum optional = ofInt(6) * ofDouble(.5);
-}

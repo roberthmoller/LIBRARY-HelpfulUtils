@@ -7,6 +7,7 @@ import 'package:h_utils/string.dart';
 
 import '../../conditions.dart' as Conditions;
 import '../optional.dart';
+import 'optional_list.dart';
 
 typedef OptionalString = Optional<String>;
 
@@ -20,6 +21,10 @@ extension OptionalStrings on OptionalString {
   OptionalString operator *(final int times) {
     return this.map((value) => List.generate(times, (index) => value).join(EMPTY));
   }
+
+  OptionalString trim() => this.map((x) => x.trim());
+
+  OptionalList<String> split(final Pattern pattern) => this.map((x) => x.split(pattern));
 
   int get length => this.map((x) => x.length).orElseGet(0);
 
