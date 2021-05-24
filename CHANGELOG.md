@@ -3,7 +3,7 @@
 ## 0.0.11 - 2021-05-24
 ### Changed
 - Re-introduced @deprecard optional.value getter for convenience
-- 
+- Added whenBlank and whenNotBlank helpers on optional strings
 
 # Changelog
 ## 0.0.10 - 2021-05-20
