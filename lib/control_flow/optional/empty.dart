@@ -9,6 +9,9 @@ import 'optional.dart';
 Empty<T> empty<T>() => Empty<T>();
 
 class Empty<T> extends Optional<T> {
+  @deprecated
+  Null get value => null;
+
   const Empty() : super();
 
   T orElse(final T Function() supplier) => supplier();
@@ -20,6 +23,8 @@ class Empty<T> extends Optional<T> {
   bool equals(T value) => false;
 
   bool get isPresent => false;
+
+  bool get isEmpty => true;
 
   Empty<N> conditionally<N>(final bool Function(Optional<T>) _, final Optional<N> Function(Optional<T>) __) => empty();
 
