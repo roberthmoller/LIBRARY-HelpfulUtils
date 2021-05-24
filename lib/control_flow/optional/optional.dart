@@ -9,6 +9,10 @@ import 'package:h_utils/control_flow/supplier.dart';
 import 'empty.dart';
 import 'present.dart';
 
+export 'typed/optional_list.dart';
+export 'typed/optional_num.dart';
+export 'typed/optional_string.dart';
+
 Optional<T> of<T>(final T value) => Optional.of(value);
 
 abstract class Optional<T> extends Equatable {
@@ -20,6 +24,9 @@ abstract class Optional<T> extends Equatable {
 
   const Optional();
 
+  @deprecated
+  T? get value;
+
   T orElse(final Supplier<T> supplier);
 
   T orElseGet(final T value);
@@ -28,7 +35,9 @@ abstract class Optional<T> extends Equatable {
 
   bool equals(T value);
 
-  bool get isPresent;
+  bool get isPresent => this is Present<T>;
+
+  bool get isEmpty => this is Empty<T>;
 
   Optional<T> ifPresent(final void Function(T) action);
 

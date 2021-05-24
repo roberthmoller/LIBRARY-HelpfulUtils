@@ -24,7 +24,7 @@ class Present<T> extends Optional<T> {
 
   bool get isPresent => true;
 
-  bool get isNotPresent => false;
+  bool get isEmpty => true;
 
   Optional<N> map<N>(final N Function(T) mapper) => Optional.of(mapper(value));
 

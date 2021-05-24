@@ -31,4 +31,8 @@ extension OptionalStrings on OptionalString {
   bool get isBlank => this.map(Conditions.isBlank).orElseGet(false);
 
   bool get isNotBlank => this.map(Conditions.notBlank).orElseGet(false);
+
+  OptionalString get whenBlank => this.filter(Conditions.isBlank);
+
+  OptionalString get whenNotBlank => this.filter(Conditions.notBlank);
 }
